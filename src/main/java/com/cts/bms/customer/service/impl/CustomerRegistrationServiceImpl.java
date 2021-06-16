@@ -10,6 +10,7 @@ import com.cts.bms.customer.entity.Customer;
 import com.cts.bms.customer.repo.CustomerRepository;
 import com.cts.bms.customer.service.CustomerRegistrationService;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -26,9 +27,8 @@ public class CustomerRegistrationServiceImpl implements CustomerRegistrationServ
 	}
 
 	@Override
-	public Mono<Customer> viewCustomer(Customer customer) {
-		log.info("Customer User :"+customer.getUsername());
-		return customerRepository.findByUsernameAndPassword(customer.getUsername(), customer.getPassword());
+	public Flux<Customer> viewCustomers() {		
+		return customerRepository.findAll();
 	}
 	
 	@Override

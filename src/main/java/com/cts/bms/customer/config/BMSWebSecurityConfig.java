@@ -26,17 +26,15 @@ public class BMSWebSecurityConfig {
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
-        http.csrf()
-            .disable()
-            .authorizeExchange()
-            .pathMatchers("/Customer/register").permitAll()
-            .pathMatchers("/Customer/.*")
-            .hasRole("bms")          
-            .pathMatchers("/**")
-            .permitAll()
-            .and()
-            .httpBasic();
-        return http.build();
+    	http.csrf()
+    	.disable()
+    	.authorizeExchange()
+    	.pathMatchers("/Customer")
+    	.hasRole("bms")
+    	.anyExchange().authenticated()
+    	.and()
+    	.httpBasic();
+    	return http.build();
     }
     
     @Bean
