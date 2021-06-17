@@ -18,7 +18,7 @@ public class CustomerRegistrationServiceImpl implements CustomerRegistrationServ
 
 	private static final Logger log = LoggerFactory.getLogger(CustomerRegistrationServiceImpl.class);
 	@Autowired
-	private CustomerRepository customerRepository;
+	public CustomerRepository customerRepository;
 
 
 	@Override
